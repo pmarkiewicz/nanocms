@@ -79,3 +79,16 @@ class FirstPage(BasePage):
         except IndexError:
             raise Http404
         
+class FirstPageRedirect(object):
+    section = None
+    
+    def __init__(self, **kwargs):
+        try:
+            self.section = kwargs['section']
+        except:
+            pass
+
+    def __call__(self, request, **kwargs):
+        page = models.Page.objects.nav_first(self.section)
+        
+        return redirect(page.get_absolute_url())
