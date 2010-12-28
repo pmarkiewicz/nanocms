@@ -78,7 +78,7 @@ def cms_news(request, section_name):
     return _cms_pages_list(request.path, section_name, '-order')
 
 @register.simple_tag
-def cms(request, section_name, order_by=None, limit=None, template_name):
+def cms(request, section_name, template_name, order_by=None, limit=None):
     """
     Renders set of pages that belongs to section_name using template_name
     """
