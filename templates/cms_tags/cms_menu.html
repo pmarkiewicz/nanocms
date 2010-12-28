@@ -1,0 +1,5 @@
+{% for page in pages %}
+<li {% if page.active %} class='active' {% endif %}>
+	<a href="{{page.get_absolute_url}}">{{page.nav_title}}</a>
+</li>
+{% endfor %}

@@ -1,0 +1,3 @@
+{% for page in pages %}
+<p><a href="{{page.get_absolute_url}}">{{page.nav_title}}</a> - {{page.summary|truncatewords:25}}...</p>
+{% endfor %}
