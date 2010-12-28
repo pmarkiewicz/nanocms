@@ -1,7 +1,8 @@
-#Mon Dec 27 15:21:47 CET 2010
+#Tue Dec 28 14:20:08 CET 2010
 eclipse.preferences.version=1
 encoding//templatetags/cms_tags.py=utf-8
 encoding/admin.py=utf-8
 encoding/models.py=utf-8
+encoding/site.py=utf-8
 encoding/urls.py=utf-8
 encoding/views.py=utf-8
