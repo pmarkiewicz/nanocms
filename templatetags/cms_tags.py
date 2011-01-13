@@ -11,7 +11,7 @@ register = Library()
 
 def _cms_pages_list(path, section_name, order_by=None, limit=None):
     try:
-        section = SiteSection.objects.get(name=section_name)
+        section = SiteSection.objects.get(name__iexact=section_name)
     except:
         return {}
 

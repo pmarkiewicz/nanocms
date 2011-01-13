@@ -14,10 +14,13 @@ def _build_url(section):
 def urls():
     sections = SiteSection.objects.nav().filter(rev_url=False)
     
-    urlp = _build_url(sections[0])
-    for section in sections[1:]:
-        urlp += _build_url(section)
-        
-    return urlp
-
+    if sections:
+        urlp = _build_url(sections[0])
+        for section in sections[1:]:
+            urlp += _build_url(section)
+            
+        return urlp
+    else:
+        return []
+    
 urlpatterns = urls()

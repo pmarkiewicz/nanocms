@@ -44,7 +44,11 @@ class BasePage(object):
     def get_section(self, **kwargs):
         section_name = kwargs.get('section', None) or self.section
         if section_name:
-            return get_object_or_404(models.SiteSection, name=section_name)
+            try:
+                return models.SiteSection.objects.get(name__iexact=section_name)
+            except ObjectDoesNotExist:
+                logger.error("Section not found [%s]" % (section_name))
+                raise Http404
 
         return None
         
@@ -57,7 +61,11 @@ class BasePage(object):
 class Page(BasePage):
     def get_page(self, section, slug):
         if section:
-            return get_object_or_404(models.Page, site_section=section, slug=slug)
+            try:
+                return models.Page.objects.get(site_section=section, slug=slug)
+            except ObjectDoesNotExist:
+                logger.error("Page not found section=[%s], slug=[%s]" % (section, slug))
+                raise Http404
         else:
             logger.warning("No section in request for slug [%s]" % slug)
             page = get_object_or_404(slug=slug)
