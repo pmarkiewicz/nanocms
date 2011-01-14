@@ -1,0 +1,31 @@
+Basic configuration and use
+---------------------------
+
+Once installed, you can add nanocms to any Django-based
+project you're developing. 
+After syncdb you can start editing your pages in admin.
+First add some site sections, they are used for grouping topics. 
+Next add some pages and set cmd.html as template name. 
+
+In urls.py add:
+# CMS content
+	# this will generate urls for every site section
+    url(r'^', include('nanocms.site')),
+    # this will redirect to first page in site section called info	
+    url(r'^info/$', nanocms.views.FirstPageRedirect(section='info'), name='info-root'),
+
+Next create cms.html something like:
+{% extends 'master.html' %}
+{% load tags %}
+
+{% block sidebar %}
+<ul id='cms_menu'>
+{% cms_menu request 'info' %} {# this will list pages in site section info #}
+</ul>
+{% endblock sidebar %}
+
+{% block content %}
+<div id='cms_content'>
+{{page.content|safe}}	{# this will display page content #}
+</div>
+{% endblock content %}
