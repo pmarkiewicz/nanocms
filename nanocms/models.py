@@ -18,13 +18,10 @@ class SiteSectionManager(models.Manager):
     def nav(self):
         return self.get_query_set().filter(show_in_nav=True)
 
-    def all(self):
-        return self.get_query_set()
-
 class SiteSection(models.Model):
     name = models.CharField(max_length=255, unique=True, blank=False)
     url = models.CharField('url', max_length=100, unique=True, blank=False)
-    rev_url = models.BooleanField('use reverse for url', default=True)
+    rev_url = models.BooleanField('use reverse for url', default=False)
     show_in_nav = models.BooleanField('Show', default=True, db_index=True)
     order = models.PositiveIntegerField('Display Order', blank=True, null=True);
     
@@ -54,9 +51,6 @@ class PageManager(models.Manager):
 
     def nav_first(self, section):
         return self.nav(section)[0]
-    
-    def all(self):
-        return self.get_query_set()
 
 class Page(models.Model):
     site_section = models.ForeignKey(SiteSection, verbose_name='Site section')
