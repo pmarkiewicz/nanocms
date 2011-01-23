@@ -28,7 +28,7 @@ class SiteSection(models.Model):
     class Meta:
         ordering = ('order', 'name')
 
-    def save(self):
+    def save(self, *args, **kwargs):
         # append slash if regular url
         if not self.rev_url:
             if self.url[-1] != '/':
@@ -38,7 +38,7 @@ class SiteSection(models.Model):
             if self.url[0] != '/':
                 self.url = '/' + self.url
              
-        super(SiteSection, self).save() # Call the "real" save() method.
+        super(SiteSection, self).save(*args, **kwargs)
 
     def __unicode__(self):
         return u"%s" % (self.name)

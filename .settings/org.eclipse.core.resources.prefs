@@ -1,8 +1,8 @@
-#Tue Dec 28 14:20:08 CET 2010
+#Fri Jan 14 00:52:37 CET 2011
 eclipse.preferences.version=1
-encoding//templatetags/cms_tags.py=utf-8
-encoding/admin.py=utf-8
-encoding/models.py=utf-8
-encoding/site.py=utf-8
-encoding/urls.py=utf-8
-encoding/views.py=utf-8
+encoding//nanocms/admin.py=utf-8
+encoding//nanocms/models.py=utf-8
+encoding//nanocms/site.py=utf-8
+encoding//nanocms/templatetags/cms_tags.py=utf-8
+encoding//nanocms/urls.py=utf-8
+encoding//nanocms/views.py=utf-8
